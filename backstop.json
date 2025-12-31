@@ -1,0 +1,41 @@
+{
+  "id": "playwright_backstop",
+
+  "engine": "playwright",
+
+  "engineOptions": {
+    "browser": "chromium"
+  },
+
+  "viewports": [
+    {
+      "label": "desktop",
+      "width": 1366,
+      "height": 768
+    }
+  ],
+
+  "scenarios": [
+    {
+      "label": "Login Page",
+      "url": "https://the-internet.herokuapp.com/login",
+      "selectors": ["document"]
+    },
+    {
+      "label": "Secure Area (After Login)",
+      "url": "https://the-internet.herokuapp.com/secure",
+      "onBeforeScript": "login.js",
+      "selectors": ["#content"]
+    }
+  ],
+
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "html_report": "backstop_data/html_report",
+    "engine_scripts": "backstop_data/engine_scripts"
+  },
+
+  "report": ["browser"],
+  "debug": false
+}
